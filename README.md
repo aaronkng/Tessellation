@@ -34,3 +34,7 @@ The cubic Bézier curve can be defined as the combinaton of two quadratic Bézie
 <p align="center">
 <img src="https://render.githubusercontent.com/render/math?math=\textbf{B}(t) = (1-t)\textbf{B}_{\textbf{P}_0,\textbf{P}_1,\textbf{P}_2}(t) %2B t\textbf{B}_{\textbf{P}_1,\textbf{P}_2,\textbf{P}_3}(t), 0 \leq t \leq 1">
 </p>  
+This can be rewritten as: 
+<p align="center">
+<img src="https://render.githubusercontent.com/render/math?math=\textbf{B}(t) = (1-t)^3\textbf{P}_0 %2B 3(1-t)^2t\textbf{P}_1 %2B 3(1-t)(t^2\textbf{P}_2 %2B t^3\textbf{P}_3, 0 \leq t \leq 1">
+</p>  
