@@ -28,4 +28,9 @@ As <img src="https://render.githubusercontent.com/render/math?math=t"> increases
 Four points  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0">,  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1">,  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2">, and  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_3"> define a cubic Bézier curve. The curve starts at  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0"> going toward  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1"> and arrives at  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_3"> coming from  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2">. The curve usually does not pass through  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1"> and  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2"> as these points are only there to provide directional infomration. 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72017531-ba0a5800-321a-11ea-8608-edc9880e3132.jpg"> 
-</p> 
+</p>  
+
+The cubic Bézier curve can be defined as the combinaton of two quadratic Bézier curves: 
+<p align="center">
+<img src="https://render.githubusercontent.com/render/math?math=\textbf{B}(t) = (1-t)\textbf{B}_{\textbf{P}_0,\textbf{P}_1,\textbf{P}_2}(t) %2B t\textbf{B}_{\textbf{P}_1,\textbf{P}_2,\textbf{P}_3}(t), 0 \leq t \leq 1">
+</p>  
