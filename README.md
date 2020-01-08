@@ -43,5 +43,5 @@ The constants that precede each point are the values of the binomial coefficient
 ## Bézier Surface 
 A Bézier surface of degree <img src="https://render.githubusercontent.com/render/math?math=(n, m)"> is defined by a set of <img src="https://render.githubusercontent.com/render/math?math=(n %2B 1)(m %2B 1)"> control points <img src="https://render.githubusercontent.com/render/math?math=\textbf{k}_{ij}">. A two-dimensional Bézier surface can be defined as a parametric surface where the position of a point <img src="https://render.githubusercontent.com/render/math?math=p"> is the function of the parametric coordinates <img src="https://render.githubusercontent.com/render/math?math=u, v">: 
 <p align="center">
-<img src="https://render.githubusercontent.com/render/math?math=\textbf{p}(u, v) = \sum_{i=0}^n \sum_{j=0}^m B_i^n(u) B_j^m(v) \textbf{k}_{ij}">
+<img src="https://render.githubusercontent.com/render/math?math=\textbf{p}(u, v) = $$\sum_{i=0}^n \sum_{j=0}^m B_i^n(u) B_j^m(v) \textbf{k}_{ij}$$">
 </p>  
