@@ -46,6 +46,4 @@ A Bézier surface of degree <img src="https://render.githubusercontent.com/rende
 <img src="https://render.githubusercontent.com/render/math?math=\textbf{p}(u, v) = \sum_{i=0}^n \sum_{j=0}^m B_i^n(u) B_j^m(v) \textbf{k}_{ij}">
 </p>  
 
-<img src="https://render.githubusercontent.com/render/math?math=B_i^n(u) = n \choose i u^i(1-u)^{n-i}"> is the Bernstein polynomial and  
-
-<img src="https://render.githubusercontent.com/render/math?math=n \choose i = \frac{n!}{i!(n-i)!}"> is the binomial coefficient. 
+<img src="https://render.githubusercontent.com/render/math?math=B_i^n(u) = n \choose i u^i(1-u)^{n-i}"> is the Bernstein polynomial and <img src="https://render.githubusercontent.com/render/math?math=n \choose i = \frac{n!}{i!(n-i)!}"> is the binomial coefficient. 
