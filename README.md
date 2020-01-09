@@ -76,7 +76,5 @@ If we have 1 level of subdivision, then that means there are 1 subdivision along
 
 From here, we have 9 tessellated vertices to compute: <img src="https://render.githubusercontent.com/render/math?math=p(0, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(0, \frac{1}{2})">, <img src="https://render.githubusercontent.com/render/math?math=p(0, 1)">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, \frac{1}{2})">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, 1)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, \frac{1}{2})">, and <img src="https://render.githubusercontent.com/render/math?math=p(1, 1)">.  
   
-From these two examples, the number of subdivided polygons we receive is (level of subdivision + 1)<sup>2<\sup>
-  . Additionally, the number of tessellated vertices to compute is (level of subdivision + 2)<sup>2<\sup>
-  . 
+From these two examples, the number of subdivided polygons we receive is (level of subdivision + 1)<sup>2</sup>. Additionally, the number of tessellated vertices to compute is (level of subdivision + 2)<sup>2</sup>. 
 ## 1.2) Constructing triangle strips for each patch
