@@ -63,4 +63,6 @@ Control point 15
 ```
 Source for control points of Utah Teapot is [here](http://www.holmes3d.net/graphics/teapot/). 
 ## 1.1) Tessellating control patches 
+The control points received from `data.txt` act as the skeletal structure for the patch, and in this portion of the implementation, we are constructing the surface of the patch by specifying the level of subdivisions we want and inputting the <img src="https://render.githubusercontent.com/render/math?math=(u, v)"> values into a function.  
+Say
 ## 1.2) Constructing triangle strips for each patch
