@@ -69,5 +69,6 @@ If we have 0 levels of subdivision, then that means there are 0 subdivisions alo
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72104550-88f45b00-32e0-11ea-9e79-8a9c8fa7f198.png">
 </p>  
+
 From here, we have 4 tessellated vertices to compute: <img src="https://render.githubusercontent.com/render/math?math=p(0, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(0, 1)">, and <img src="https://render.githubusercontent.com/render/math?math=p(1, 1)">.
 ## 1.2) Constructing triangle strips for each patch
