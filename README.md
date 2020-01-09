@@ -53,5 +53,14 @@ A Bézier surface of degree <img src="https://render.githubusercontent.com/rende
 
 # 1) Implementation
 ## 1.0) Retrieving data from `data.txt`
+The first line in `data.txt` represents the number of patches. Patches are formatted as such: 
+```
+(u,v)
+Control point 0
+Control point 1
+...
+Control point 15
+```
+Source for control points of Utah Teapot is ![here](http://www.holmes3d.net/graphics/teapot/). 
 ## 1.1) Tessellating control patches 
 ## 1.2) Constructing triangle strips for each patch
