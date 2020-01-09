@@ -61,6 +61,6 @@ Control point 1
 ...
 Control point 15
 ```
-Source for control points of Utah Teapot is ![here](http://www.holmes3d.net/graphics/teapot/). 
+Source for control points of Utah Teapot is [here](http://www.holmes3d.net/graphics/teapot/). 
 ## 1.1) Tessellating control patches 
 ## 1.2) Constructing triangle strips for each patch
