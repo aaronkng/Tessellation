@@ -85,4 +85,5 @@ Once we have the set of tessellated vertices, we need to compute each vertex usi
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72116169-3c1f7d00-32fe-11ea-92b7-9d927233f71c.png">
 </p>  
+To see how the matrix was computed, click [here](https://github.com/aaronkng/Tessellation/files/4043354/Tessellation_Matrix.pdf) for more details
 ## 1.2) Constructing triangle strips for each patch
