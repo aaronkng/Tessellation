@@ -79,5 +79,33 @@ If we have 1 level of subdivision, then that means there are 1 subdivision along
 
 From here, we have 9 tessellated vertices to compute: <img src="https://render.githubusercontent.com/render/math?math=p(0, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(0, \frac{1}{2})">, <img src="https://render.githubusercontent.com/render/math?math=p(0, 1)">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, \frac{1}{2})">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, 1)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, \frac{1}{2})">, and <img src="https://render.githubusercontent.com/render/math?math=p(1, 1)">.  
   
-From these two examples, the number of subdivided polygons we receive is (level of subdivision + 1)<sup>2</sup>. Additionally, the number of tessellated vertices to compute is (level of subdivision + 2)<sup>2</sup>. 
+Essentially, the number of subdivided polygons we receive is (level of subdivision + 1)<sup>2</sup>. Additionally, the number of tessellated vertices to compute is (level of subdivision + 2)<sup>2</sup>.  
+  
+Once we have the set of tessellated vertices, we need to compute each vertex using the parametric surface equation (section 0.3) via matrix multiplication: 
+<p align="center">
+<img src="https://render.githubusercontent.com/render/math?math=\begin{bmatrix}
+            1 & u & u^2 & u^3
+            \end{bmatrix}
+            \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            -3 & 3 & 0 & 0 \\
+            3 & -6 & 3 & 0 \\
+            -1 & 3 & -3 & 1 
+            \end{bmatrix}
+            \begin{bmatrix}
+        \textbf{k}_{00} & \textbf{k}_{01} & \textbf{k}_{02} & \textbf{k}_{03}\\
+        \textbf{k}_{10} & \textbf{k}_{11} & \textbf{k}_{12} & \textbf{k}_{13}\\
+        \textbf{k}_{20} & \textbf{k}_{21} & \textbf{k}_{22} & \textbf{k}_{23}\\
+        \textbf{k}_{30} & \textbf{k}_{31} & \textbf{k}_{32} & \textbf{k}_{33}\\
+        \end{bmatrix}
+        \begin{bmatrix}
+        1 & -3 & 3 & -1 \\
+        0 & 3 & -6 & 3 \\
+        0 & 0 & 3 & -3 \\
+        0 & 0 & 0 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+        1 \\ v \\ v^2 \\ v^3
+        \end{bmatrix}">
+</p>  
 ## 1.2) Constructing triangle strips for each patch
