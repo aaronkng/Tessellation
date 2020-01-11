@@ -96,5 +96,9 @@ Indices: 0 1 2 3 4 5 ...
 Trianges:{0 1 2}
                {3 4 5}
 ```
-
+The diagram below shows the order in which the triangles will be constructed for a patch of tessellated vertices that has one level of subdivision: 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/72211149-300cfa00-347b-11ea-805f-488d178b2fdd.png" width="300" height="300">
+</p>  
+In this scenario, the vertices of triangle 1 would occupy indices 0, 1, and 2; the vertices of triangle 2 would occupy indices 3, 4, and 5; and so on. We can optimize our data management by finding a way where the vertices of contiguous triangles are not stored twice into the vertex buffer object (i.e. the diagonal vertices of triangle 1 and 2 are stored twice). 
 # 2) Results
