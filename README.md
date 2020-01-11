@@ -90,7 +90,7 @@ To see how the matrix was computed, click
 [here](https://github.com/aaronkng/Tessellation/blob/master/Tessellation_Matrix.pdf).
   
 ## 1.2) Constructing triangle strips for each patch
-OpenGL renders objects onto the screen by taking data from the vertex buffer object and passing them through the graphics pipeline. We must indicate to the graphics pipeline the primitive we are using, and then, arrange our tessellated vertices so that it matches the drawing order of the primitive. Below show the drawing order of the primitive we are using, `GL_TRIANGLES`: 
+OpenGL renders objects onto the screen by taking data from the vertex buffer object and passing them through the graphics pipeline. We must indicate the primitive we intend to use to the graphics pipeline, and then, arrange our tessellated vertices so that it matches the drawing order of the primitive. Below show the drawing order of the primitive we are using, `GL_TRIANGLES`: 
 ```
 Vertices: 0 1 2 3 4 5 ...
 Trianges:{0 1 2}
