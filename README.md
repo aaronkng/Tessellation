@@ -94,3 +94,5 @@ Now that we have computed our tessellated vertices, we need to arrange them into
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72209402-815cbf80-3462-11ea-99d4-af83f2c9dbba.png" width="300" height="300">
 </p>
+
+# 2) Results
