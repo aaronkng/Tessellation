@@ -90,3 +90,7 @@ To see how the matrix was computed, click
 [here](https://github.com/aaronkng/Tessellation/blob/master/Tessellation_Matrix.pdf).
   
 ## 1.2) Constructing triangle strips for each patch
+Now that we have computed our tessellated vertices, we need to arrange them into triangles so that they can be displayed as shapes. Below is a diagram of the order in which the triangles are created: 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/72209402-815cbf80-3462-11ea-99d4-af83f2c9dbba.png)">
+</p>
