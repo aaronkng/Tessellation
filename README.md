@@ -104,14 +104,26 @@ In this scenario, the vertices of triangle 1 would occupy indices 0, 1, and 2; t
 
 # 2) Results
 ## Control Points
-![control_pts](https://user-images.githubusercontent.com/34965351/73144225-6be9b700-4058-11ea-8d8d-6c12a8eafbbd.jpg)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/73144225-6be9b700-4058-11ea-8d8d-6c12a8eafbbd.jpg" width="300" height="300">
+</p>  
 ## Level 1 Tessellation
-![level_1](https://user-images.githubusercontent.com/34965351/73144230-73a95b80-4058-11ea-807c-5a68d195bb39.jpg)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/73144230-73a95b80-4058-11ea-807c-5a68d195bb39.jpg" width="300" height="300">
+</p>  
 ## Level 2 Tessellation
-![level_2](https://user-images.githubusercontent.com/34965351/73144232-7c9a2d00-4058-11ea-810f-be3a0aad3ac6.jpg)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/73144232-7c9a2d00-4058-11ea-810f-be3a0aad3ac6.jpg" width="300" height="300">
+</p>  
 ## Level 5 Tessellation
-![level_5](https://user-images.githubusercontent.com/34965351/73144236-858afe80-4058-11ea-99b8-3863a229a47f.jpg)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/73144236-858afe80-4058-11ea-99b8-3863a229a47f.jpg" width="300" height="300">
+</p>  
 ## Level 10 Tessellation 
-![level_10](https://user-images.githubusercontent.com/34965351/73144239-8c197600-4058-11ea-84eb-48111b7f32f4.jpg)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/73144239-8c197600-4058-11ea-84eb-48111b7f32f4.jpg" width="300" height="300">
+</p>  
 ## Bonus: Some camera work
-![ezgif com-resize](https://user-images.githubusercontent.com/34965351/73144538-96893f00-405b-11ea-9f13-6b050037832b.gif)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34965351/73144538-96893f00-405b-11ea-9f13-6b050037832b.gif" >
+</p>  
