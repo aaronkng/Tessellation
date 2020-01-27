@@ -128,6 +128,94 @@ The diagram below shows the order in which the triangles will be constructed for
 </p>  
 In this scenario, the vertices of triangle 1 would occupy indices 0, 1, and 2; the vertices of triangle 2 would occupy indices 3, 4, and 5; and so on. We can optimize our data management by finding a way where the vertices of contiguous triangles are not stored twice into the vertex buffer object (i.e. the diagonal vertices of triangle 1 and 2 are stored twice). 
 
+Code Snippet: 
+```
+void generateVertices()
+{
+	// Get vertices from tessellating control points
+	for (int patchID = 0; patchID < NUM_PATCHES; patchID++)
+	{
+		float xValues[NUM_CNTRL_PTS_PER_PATCH];
+		float yValues[NUM_CNTRL_PTS_PER_PATCH];
+		float zValues[NUM_CNTRL_PTS_PER_PATCH];
+		for (int vertID = 0; vertID < NUM_CNTRL_PTS_PER_PATCH; vertID++)
+		{
+			xValues[vertID] = controlPoints[0 + vertID * NUM_FLOATS_PER_VEC3 + patchID * NUM_CNTRL_PTS_PER_PATCH * NUM_FLOATS_PER_VEC3];
+			yValues[vertID] = controlPoints[1 + vertID * NUM_FLOATS_PER_VEC3 + patchID * NUM_CNTRL_PTS_PER_PATCH * NUM_FLOATS_PER_VEC3];
+			zValues[vertID] = controlPoints[2 + vertID * NUM_FLOATS_PER_VEC3 + patchID * NUM_CNTRL_PTS_PER_PATCH * NUM_FLOATS_PER_VEC3];
+		}
+
+		glm::mat4 P_x = glm::make_mat4(xValues);
+		glm::mat4 P_y = glm::make_mat4(yValues);
+		glm::mat4 P_z = glm::make_mat4(zValues);
+
+		int iter = 0;
+		for (int k = 0; k < LEVEL; k++)
+		{
+			// Tri formation pattern:
+			// Format: (u, v)
+			// i = 0: (k, 0) (k, 1) (k + 1, 0)
+			//		  +1 +1
+			// i = 1: (k + 1, 1) (k, 1) (k + 1, 0)
+			//							+0 +2 <- check if v value exceeds limit
+			// i = 2: (k + 1, 1) (k, 1) (k + 1, 2)
+			//		  -1	 +1
+			// i = 3: (k, 2) (k, 1) (k + 1, 2)
+			//				 +0 +2 <- check if v value exceeds limit
+			int u_0 = k;
+			int v_0 = 0;
+			int u_1 = k;
+			int v_1 = 1;
+			int u_2 = k + 1;
+			int v_2 = 0;
+			int counter = 0;
+			while (v_1 <= LEVEL && v_2 <= LEVEL)
+			{
+				// Input vertices for first triangle
+				formVertex(patchID, iter, u_0, v_0, P_x, P_y, P_z);
+				iter += NUM_FLOATS_PER_VEC3;
+				// Input vertices for second triangle
+				formVertex(patchID, iter, u_1, v_1, P_x, P_y, P_z);
+				iter += NUM_FLOATS_PER_VEC3;
+				// Input vertices for third triangle
+				formVertex(patchID, iter, u_2, v_2, P_x, P_y, P_z);
+				iter += NUM_FLOATS_PER_VEC3;
+
+				if (counter % 4 == 0)
+				{
+					u_0 += 1;
+					v_0 += 1;
+				}
+				if (counter % 4 == 1)
+				{
+					v_2 += 2;
+				}
+				if (counter % 4 == 2)
+				{
+					u_0 -= 1;
+					v_0 += 1;
+				}
+				if (counter % 4 == 3)
+				{
+					v_1 += 2;
+				}
+				counter++;
+			}
+		}
+	}
+
+	// Generate vertex array and buffers
+	glGenVertexArrays(1, &verticesVAO);
+	glGenBuffers(1, &verticesVBO);
+	glBindVertexArray(verticesVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, verticesVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, NUM_FLOATS_PER_VEC3, GL_FLOAT, GL_FALSE, NUM_FLOATS_PER_VEC3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glBindVertexArray(0);
+}
+```
+
 # 2) Results
 ## Control Points
 <p align="center">
