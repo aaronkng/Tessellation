@@ -246,3 +246,9 @@ void generateVertices()
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/73144538-96893f00-405b-11ea-9f13-6b050037832b.gif" >
 </p>  
+
+# 3) Future Work
+- Optimize triangle formation pattern so that vertices aren't put in twice in the VBO
+- Allow tessellation levels to change based on distance from camera to object
+- Create an interactable program that allows user to edit their polygons 
+- Use CUDA to cut down on the runtime of the tessellation before the VBO is sent to the GPU form the CPU
