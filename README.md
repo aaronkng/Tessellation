@@ -155,13 +155,13 @@ void generateVertices()
 			// Tri formation pattern:
 			// Format: (u, v)
 			// i = 0: (k, 0) (k, 1) (k + 1, 0)
-			//		  +1 +1
+			//	   +1 +1
 			// i = 1: (k + 1, 1) (k, 1) (k + 1, 0)
-			//							+0 +2 <- check if v value exceeds limit
+			//				+0 +2 <- check if v value exceeds limit
 			// i = 2: (k + 1, 1) (k, 1) (k + 1, 2)
-			//		  -1	 +1
+			//	      -1 +1
 			// i = 3: (k, 2) (k, 1) (k + 1, 2)
-			//				 +0 +2 <- check if v value exceeds limit
+			//		  +0 +2 <- check if v value exceeds limit
 			int u_0 = k;
 			int v_0 = 0;
 			int u_1 = k;
