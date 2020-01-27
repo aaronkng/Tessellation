@@ -103,3 +103,15 @@ The diagram below shows the order in which the triangles will be constructed for
 In this scenario, the vertices of triangle 1 would occupy indices 0, 1, and 2; the vertices of triangle 2 would occupy indices 3, 4, and 5; and so on. We can optimize our data management by finding a way where the vertices of contiguous triangles are not stored twice into the vertex buffer object (i.e. the diagonal vertices of triangle 1 and 2 are stored twice). 
 
 # 2) Results
+## Control Points
+![control_pts](https://user-images.githubusercontent.com/34965351/73144225-6be9b700-4058-11ea-8d8d-6c12a8eafbbd.jpg)
+## Level 1 Tessellation
+![level_1](https://user-images.githubusercontent.com/34965351/73144230-73a95b80-4058-11ea-807c-5a68d195bb39.jpg)
+## Level 2 Tessellation
+![level_2](https://user-images.githubusercontent.com/34965351/73144232-7c9a2d00-4058-11ea-810f-be3a0aad3ac6.jpg)
+## Level 5 Tessellation
+![level_5](https://user-images.githubusercontent.com/34965351/73144236-858afe80-4058-11ea-99b8-3863a229a47f.jpg)
+## Level 10 Tessellation 
+![level_10](https://user-images.githubusercontent.com/34965351/73144239-8c197600-4058-11ea-84eb-48111b7f32f4.jpg)
+## Bonus: Some camera work
+![ezgif com-resize](https://user-images.githubusercontent.com/34965351/73144538-96893f00-405b-11ea-9f13-6b050037832b.gif)
