@@ -86,6 +86,32 @@ Once we have the set of tessellated vertices, we need to compute each vertex usi
 <img src="https://user-images.githubusercontent.com/34965351/72116169-3c1f7d00-32fe-11ea-92b7-9d927233f71c.png">
 </p>  
 
+Code Snippet: 
+```
+// Multiplication order: v * Bz_t * P * Bz * u
+void formVertex(int patchID, int iter, int u, int v, glm::mat4 P_x, glm::mat4 P_y, glm::mat4 P_z)
+{
+	float u_value = (float)u / (float)LEVEL;
+	float v_value = (float)v / (float)LEVEL;
+
+	glm::vec4 u_vec = glm::vec4(1, u_value, u_value * u_value, u_value * u_value * u_value);
+	glm::vec4 v_vec = glm::vec4(1, v_value, v_value * v_value, v_value * v_value * v_value);
+	glm::mat4 Bz = glm::mat4(1, 0, 0, 0, -3, 3, 0, 0, 3, -6, 3, 0, -1, 3, -3, 1);
+
+	glm::vec4 x_vec = glm::transpose(Bz) * P_x * Bz * u_vec;
+	glm::vec4 y_vec = glm::transpose(Bz) * P_y * Bz * u_vec;
+	glm::vec4 z_vec = glm::transpose(Bz) * P_z * Bz * u_vec;
+
+	float x = v_vec.x * x_vec.x + v_vec.y * x_vec.y + v_vec.z * x_vec.z + v_vec.w * x_vec.w;
+	float y = v_vec.x * y_vec.x + v_vec.y * y_vec.y + v_vec.z * y_vec.z + v_vec.w * y_vec.w;
+	float z = v_vec.x * z_vec.x + v_vec.y * z_vec.y + v_vec.z * z_vec.z + v_vec.w * z_vec.w;
+
+	vertices[0 + iter + patchID * LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI * NUM_FLOATS_PER_VEC3] = x;
+	vertices[1 + iter + patchID * LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI * NUM_FLOATS_PER_VEC3] = y;
+	vertices[2 + iter + patchID * LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI * NUM_FLOATS_PER_VEC3] = z;
+}
+```
+
 To see how the matrix was computed, click 
 [here](https://github.com/aaronkng/Tessellation/blob/master/Tessellation_Matrix.pdf).
   
