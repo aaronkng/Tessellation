@@ -72,7 +72,8 @@ A Bézier surface of degree <img src="https://render.githubusercontent.com/rende
 </details>
 
 # 1) Implementation
-## 1.0) Retrieving data from `data.txt`
+<details><summary><b>Retrieving data</b></summary>
+<p>
 The first line in `data.txt` represents the number of patches. Patches are formatted as such: 
 ```
 (u,v)
@@ -82,7 +83,12 @@ Control point 1
 Control point 15
 ```
 Source for control points of Utah Teapot is [here](http://www.holmes3d.net/graphics/teapot/). 
-## 1.1) Tessellating control patches 
+	
+</p>
+</details>
+
+<details><summary><b>Tessellating Control Patches</b></summary>
+<p>
 The control points received from `data.txt` act as the skeletal structure for the patch, and in this portion of the implementation, we are constructing the surface of the patch by specifying the level of subdivisions we want and inputting the <img src="https://render.githubusercontent.com/render/math?math=(u, v)"> values into a function.  
   
 If we have 0 levels of subdivision, then that means there are 0 subdivisions along the u-axis and 0 subdivisions along the v-axis, as shown in the diagram below: 
@@ -134,8 +140,11 @@ void formVertex(int patchID, int iter, int u, int v, glm::mat4 P_x, glm::mat4 P_
 
 To see how the matrix was computed, click 
 [here](https://github.com/aaronkng/Tessellation/blob/master/Tessellation_Matrix.pdf).
+</p>
+</details>
   
-## 1.2) Constructing triangle strips for each patch
+<details><summary><b>Triangle Strip Construction</b></summary>
+<p>
 OpenGL renders objects onto the screen by taking data from the vertex buffer object and passing them through the graphics pipeline. We must indicate the primitive we intend to use to the graphics pipeline, and then, arrange our tessellated vertices so that it matches the drawing order of the primitive. Below show the drawing order of the primitive we are using, `GL_TRIANGLES`: 
 ```
 Indices: 0 1 2 3 4 5 ...
@@ -235,6 +244,8 @@ void generateVertices()
 	glBindVertexArray(0);
 }
 ```
+</p>
+</details>
 
 # 2) Results
 ## Control Points
