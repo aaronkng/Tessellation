@@ -15,7 +15,9 @@ A linear Bézier curve is simply a straight line in which linear interpolation o
 </p>
 </details>	
 
-## 0.1) Quadratic Bézier Curves 
+<details><summary><b>Quadratic Bézier Curves</b></summary>
+<p>
+	
 A quadratic Bézier curve is a path traced by the function <img src="https://render.githubusercontent.com/render/math?math=\textbf{B}(t)">, given points <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0">, <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1">, and <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2">: 
 <p align="center">
 <img src="https://render.githubusercontent.com/render/math?math=\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 %2B t\textbf{P}_1] %2B t[(1-t)\textbf{P}_1 %2B t\textbf{P}_2], 0 \leq t \leq 1">
@@ -30,6 +32,9 @@ As <img src="https://render.githubusercontent.com/render/math?math=t"> increases
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72016266-51ba7700-3218-11ea-93fb-578be7213b90.jpg"> 
 </p> 
+
+</p>
+</details>
 
 ## 0.2) Cubic Bézier Curves
 Four points  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0">,  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1">,  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2">, and  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_3"> define a cubic Bézier curve. The curve starts at  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0"> going toward  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1"> and arrives at  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_3"> coming from  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2">. The curve usually does not pass through  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1"> and  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2"> as these points are only there to provide directional infomration. 
