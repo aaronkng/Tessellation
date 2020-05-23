@@ -291,3 +291,4 @@ void generateVertices()
 # Post-Mortem 
 - Understanding how a pipline works and breaking down the development process into discrete chunks (i.e. data processing, tessellating vertices, constructing triangles)
 - Carefully aranging data in the VBO so that the visual output matches expcetations 
+- Reigorously tested the functionality of a function before moving onto the next one in order to make the debugging process simpler
