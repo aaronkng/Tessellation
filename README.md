@@ -1,3 +1,6 @@
+# Goals of this project 
+The objective of this project was to understand how tessellation via Bézier surfaces worked and develop a piepline that takes in control points from a text file as input outputs a smooth 3D object. 
+
 # 0) Overview
 A Bézier curve is defined by a set of control points <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0"> to <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_n">, where <img src="https://render.githubusercontent.com/render/math?math=n"> is the order of the Bézier curve (<img src="https://render.githubusercontent.com/render/math?math=n = 1"> for linear
 curves, <img src="https://render.githubusercontent.com/render/math?math=n = 2"> for quadratic curves, etc.). The first and last control points are always at the end of the curves, but intermediate control points are not constrained to the curve. 
@@ -285,8 +288,6 @@ void generateVertices()
 <img src="https://user-images.githubusercontent.com/34965351/73144538-96893f00-405b-11ea-9f13-6b050037832b.gif" >
 </p>  
 
-# 3) Future Work
-- Optimize triangle formation pattern so that vertices aren't put in twice in the VBO
-- Allow tessellation levels to change based on distance from camera to object
-- Create an interactable program that allows user to edit their polygons 
-- Use CUDA to cut down on the runtime of the tessellation before the VBO is sent to the GPU form the CPU
+# Post-Mortem 
+- Understanding how a pipline works and breaking down the development process into discrete chunks (i.e. data processing, tessellating vertices, constructing triangles)
+- Carefully aranging data in the VBO so that the visual output matches expcetations 
