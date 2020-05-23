@@ -8,7 +8,8 @@ A linear Bézier curve is simply a straight line in which linear interpolation o
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72015614-f3d95f80-3216-11ea-9714-4c9e70cde675.png" width="250" height="250"> <br>
 <img src="https://render.githubusercontent.com/render/math?math=\textbf{B}(t) = \textbf{P}_0 %2B t(\textbf{P}_1 - \textbf{P}_0) = (1-t)\textbf{P}_0 %2B t\textbf{P}_1, 0 \leq t \leq 1">
-</p>  	
+</p>
+	
 </p>
 </details>
 
