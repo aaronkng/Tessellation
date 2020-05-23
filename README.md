@@ -4,6 +4,7 @@ curves, <img src="https://render.githubusercontent.com/render/math?math=n = 2"> 
 
 <details><summary><b>Linear Bézier Curves</b></summary>
 <p>
+	
 A linear Bézier curve is simply a straight line in which linear interpolation occurs between two points, <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0"> and <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1">:  
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72015614-f3d95f80-3216-11ea-9714-4c9e70cde675.png" width="250" height="250"> <br>
