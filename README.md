@@ -1,4 +1,6 @@
 # 0) Overview
+<details><summary><b>Click me to see codebase</b></summary>
+<p>
 A Bézier curve is defined by a set of control points <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0"> to <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_n">, where <img src="https://render.githubusercontent.com/render/math?math=n"> is the order of the Bézier curve (<img src="https://render.githubusercontent.com/render/math?math=n = 1"> for linear
 curves, <img src="https://render.githubusercontent.com/render/math?math=n = 2"> for quadratic curves, etc.). The first and last control points are always at the end of the curves, but intermediate control points are not constrained to the curve. 
 ## 0.0) Linear Bézier Curves
@@ -50,6 +52,9 @@ A Bézier surface of degree <img src="https://render.githubusercontent.com/rende
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72022702-f42d2700-3225-11ea-8307-7f555e51aac1.gif">
 </p>  
+
+</p>
+</details>
 
 # 1) Implementation
 ## 1.0) Retrieving data from `data.txt`
