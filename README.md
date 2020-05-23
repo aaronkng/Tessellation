@@ -38,6 +38,7 @@ As <img src="https://render.githubusercontent.com/render/math?math=t"> increases
 
 <details><summary><b>Cubic Bézier Curves</b></summary>
 <p>
+	
 Four points  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0">,  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1">,  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2">, and  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_3"> define a cubic Bézier curve. The curve starts at  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_0"> going toward  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1"> and arrives at  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_3"> coming from  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2">. The curve usually does not pass through  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_1"> and  <img src="https://render.githubusercontent.com/render/math?math=\textbf{P}_2"> as these points are only there to provide directional infomration. 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72017531-ba0a5800-321a-11ea-8608-edc9880e3132.jpg"> 
@@ -58,6 +59,7 @@ The constants that precede each point are the values of the binomial coefficient
 
 <details><summary><b>Bézier Surface</b></summary>
 <p> 
+	
 A Bézier surface of degree <img src="https://render.githubusercontent.com/render/math?math=(n, m)"> is defined by a set of <img src="https://render.githubusercontent.com/render/math?math=(n %2B 1)(m %2B 1)"> control points <img src="https://render.githubusercontent.com/render/math?math=\textbf{k}_{ij}">. A two-dimensional Bézier surface can be defined as a parametric surface where the position of a point <img src="https://render.githubusercontent.com/render/math?math=p"> is the function of the parametric coordinates <img src="https://render.githubusercontent.com/render/math?math=u, v">: 
 <p align="center">
 <img src="https://render.githubusercontent.com/render/math?math=\textbf{p}(u, v) = \sum_{i=0}^n \sum_{j=0}^m B_i^n(u) B_j^m(v) \textbf{k}_{ij}">
@@ -74,6 +76,7 @@ A Bézier surface of degree <img src="https://render.githubusercontent.com/rende
 # 1) Implementation
 <details><summary><b>Retrieving data</b></summary>
 <p>
+	
 The first line in `data.txt` represents the number of patches. Patches are formatted as such: 
 ```
 (u,v)
@@ -89,6 +92,7 @@ Source for control points of Utah Teapot is [here](http://www.holmes3d.net/graph
 
 <details><summary><b>Tessellating Control Patches</b></summary>
 <p>
+	
 The control points received from `data.txt` act as the skeletal structure for the patch, and in this portion of the implementation, we are constructing the surface of the patch by specifying the level of subdivisions we want and inputting the <img src="https://render.githubusercontent.com/render/math?math=(u, v)"> values into a function.  
   
 If we have 0 levels of subdivision, then that means there are 0 subdivisions along the u-axis and 0 subdivisions along the v-axis, as shown in the diagram below: 
@@ -140,11 +144,13 @@ void formVertex(int patchID, int iter, int u, int v, glm::mat4 P_x, glm::mat4 P_
 
 To see how the matrix was computed, click 
 [here](https://github.com/aaronkng/Tessellation/blob/master/Tessellation_Matrix.pdf).
+
 </p>
 </details>
   
 <details><summary><b>Triangle Strip Construction</b></summary>
 <p>
+	
 OpenGL renders objects onto the screen by taking data from the vertex buffer object and passing them through the graphics pipeline. We must indicate the primitive we intend to use to the graphics pipeline, and then, arrange our tessellated vertices so that it matches the drawing order of the primitive. Below show the drawing order of the primitive we are using, `GL_TRIANGLES`: 
 ```
 Indices: 0 1 2 3 4 5 ...
@@ -244,6 +250,7 @@ void generateVertices()
 	glBindVertexArray(0);
 }
 ```
+
 </p>
 </details>
 
