@@ -50,6 +50,7 @@ unsigned int verticesVBO, verticesVAO;
 int main()
 {
 	// Configuring GLFW settings
+	// - GLFW is a library that helps manage application window and user inputs
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -67,6 +68,12 @@ int main()
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	// Manage OpenGL function pointers via GLAD
+	// OpenGL does not have direct access to hardware
+	// - Must rely on graphics driver on system to execute commands 
+	// - Exact location in memory where these commands are stored vary between 
+	//   different drives and hardware setups 
+	// - gladLoadGLLoader() ensures all OpenGL functions (based on system and driver hardware)
+	//   are accessible and ready for use 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "Failed to initialize GLAD" << std::endl;
@@ -74,6 +81,14 @@ int main()
 	}
 
 	// Configure openGL settings
+	// - glEnable(GL_DEPTH_TEST) ensures that objects in a 3D scene are rendered in 
+	//   correct oder based on distance from viewer, creating a more realistic and 
+	//   visually accurate representation of scene 
+	// - glPolygonMode(GL_FRONT_AND_BACK, GL_LINE): 
+	//   - GL_FRONT_AND_BACK: specifies this mode applies to both front and back faces
+	//     of polygon 
+	//   - GL_LINE: polygons should be rendered as lines 
+	//   - Effect: creates a wireframe representation of the scene 
 	glEnable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
