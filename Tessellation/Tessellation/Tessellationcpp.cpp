@@ -198,10 +198,13 @@ void getControlPoints()
 	if (myFile.is_open())
 	{
 		// Ignore the first line
+		// - First line is the number of control patches 
 		getline(myFile, line);
 		for (int patchID = 0; patchID < NUM_PATCHES; patchID++)
 		{
 			// Ignore the line with "3 3"
+			// - Bezier surface degree (denoted n, m) is 3,3
+			// - See "Bezier Surface" under Overview section for context on surface degree
 			getline(myFile, line);
 			for (int vertID = 0; vertID < NUM_CNTRL_PTS_PER_PATCH; vertID++)
 			{
@@ -211,6 +214,13 @@ void getControlPoints()
 				for (int k = 0; k < NUM_FLOATS_PER_VEC3; k++)
 				{
 					float value = std::stof(tokens[k]);
+					// Control point data translated to 1D array of floats because
+					// glBufferData() reads vertex data in 1D array format 
+					// controlPoints[0] => Patch 0, Control Point Vertex 0, x
+					// controlPoints[1] => Patch 0, Control Point Vertex 0, y 
+					// controlPoints[2] => Patch 0, Control Point Vertex 0, z 
+					// controlPoints[3] => Patch 1, Control Point Vertex 1, x
+					// ...
 					controlPoints[k + NUM_FLOATS_PER_VEC3 * vertID + NUM_CNTRL_PTS_PER_PATCH * NUM_FLOATS_PER_VEC3 * patchID] = value;
 				}
 			}
@@ -222,6 +232,7 @@ void getControlPoints()
 		std::cout << "Unable to open file";
 	}
 
+	// AARON TODO: Comments here
 	// Generate VAO and VBO
 	glGenVertexArrays(1, &controlVAO);
 	glGenBuffers(1, &controlVBO);
