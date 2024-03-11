@@ -97,21 +97,21 @@ Source for control points of Utah Teapot is [here](http://www.holmes3d.net/graph
 <details><summary><b>Tessellating Control Patches</b></summary>
 <p>
 	
-The control points received from `data.txt` act as the skeletal structure for the patch, and in this portion of the implementation, we are constructing the surface of the patch by specifying the level of subdivisions we want and inputting the <img src="https://render.githubusercontent.com/render/math?math=(u, v)"> values into a function.  
+The control points received from `data.txt` act as the skeletal structure for the patch, and in this portion of the implementation, we are constructing the surface of the patch by specifying the level of subdivisions we want and inputting the $(u, v)$ values into a function.  
   
 If we have 0 levels of subdivision, then that means there are 0 subdivisions along the u-axis and 0 subdivisions along the v-axis, as shown in the diagram below: 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72104550-88f45b00-32e0-11ea-9e79-8a9c8fa7f198.png" width="300" height="300">
 </p>  
 
-From here, we have 4 tessellated vertices to compute: <img src="https://render.githubusercontent.com/render/math?math=p(0, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(0, 1)">, and <img src="https://render.githubusercontent.com/render/math?math=p(1, 1)">.  
+From here, we have 4 tessellated vertices to compute: $p(0, 0)$, $p(1, 0)$, $p(0, 1)$, and $p(1, 1)$.  
   
 If we have 1 level of subdivision, then that means there are 1 subdivision along the u-axis and 1 subdivision along the v-axis, as shown in the diagram below: 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72105867-323c5080-32e3-11ea-872d-13f05050ffca.png" width="300" height="300">
 </p>  
 
-From here, we have 9 tessellated vertices to compute: <img src="https://render.githubusercontent.com/render/math?math=p(0, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(0, \frac{1}{2})">, <img src="https://render.githubusercontent.com/render/math?math=p(0, 1)">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, \frac{1}{2})">, <img src="https://render.githubusercontent.com/render/math?math=p(\frac{1}{2}, 1)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, 0)">, <img src="https://render.githubusercontent.com/render/math?math=p(1, \frac{1}{2})">, and <img src="https://render.githubusercontent.com/render/math?math=p(1, 1)">.  
+From here, we have 9 tessellated vertices to compute: $p(0, 0)$, $p(0, \frac{1}{2})$, $p(0, 1)$, $p(\frac{1}{2}, 0)$, $p(\frac{1}{2}, \frac{1}{2})$, $p(\frac{1}{2}, 1)$, $p(1, 0)$, $p(1, \frac{1}{2})$, and $p(1, 1)$.  
   
 Essentially, the number of subdivided polygons we receive is (level of subdivision + 1)<sup>2</sup>. Additionally, the number of tessellated vertices to compute is (level of subdivision + 2)<sup>2</sup>.  
   
