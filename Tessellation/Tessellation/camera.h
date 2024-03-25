@@ -7,6 +7,8 @@
 
 #include <vector>
 
+// Info about camera view matrix: https://www.3dgep.com/understanding-the-view-matrix/
+
 enum Camera_Movement
 {
 	UP,
@@ -38,6 +40,8 @@ public:
 	glm::vec3 WorldUp;
 
 	// Euler angles
+	// - Yaw: Camera angle moves left/right
+	// - Pitch: Camera angle moves up/down
 	float Yaw;
 	float Pitch;
 
@@ -106,6 +110,7 @@ private:
 	void UpdateCameraVectors()
 	{
 		// Calculate the new Front Vector
+		// - Front vector is what camera points up to
 		glm::vec3 front;
 		front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
 		front.y = sin(glm::radians(Pitch));
