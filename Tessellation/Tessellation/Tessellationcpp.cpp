@@ -110,6 +110,7 @@ int main()
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		// Update view of teapot based on camera position and angle
 		glm::mat4 projection = glm::perspective(glm::radians(90.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
 
@@ -123,9 +124,11 @@ int main()
 		glm::mat4 teapotMVP = projection * view * teapotModel;
 		teapotShader.setMat4("mvp", teapotMVP);
 
+		// Draw Bezier Surface of vertices constructed before rendering loop
 		glBindVertexArray(verticesVAO);
 		for (int patchID = 0; patchID < NUM_PATCHES; patchID++)
 		{
+			// Draw Bezier Surface patch by patch
 			glDrawArrays(GL_TRIANGLES, patchID * LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI, LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI);
 		}
 		glBindVertexArray(0);
@@ -233,6 +236,11 @@ void getControlPoints()
 	}
 
 	// Generate VAO and VBO
+	// - VAO: Object which contains 1+ VBO and designed to store information for complete
+	//   rendered object 
+	// - VBO: Memroy buffer that holds vertices information. 
+	//   - One VBO can be for holding coordinate information, another VBO for holding
+	//     color information 
 	glGenVertexArrays(1, &controlVAO);
 	glGenBuffers(1, &controlVBO);
 	glBindVertexArray(controlVAO);
