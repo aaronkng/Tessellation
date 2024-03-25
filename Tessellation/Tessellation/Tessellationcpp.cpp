@@ -232,7 +232,6 @@ void getControlPoints()
 		std::cout << "Unable to open file";
 	}
 
-	// AARON TODO: Comments here
 	// Generate VAO and VBO
 	glGenVertexArrays(1, &controlVAO);
 	glGenBuffers(1, &controlVBO);
@@ -249,6 +248,7 @@ void generateVertices()
 	// Get vertices from tessellating control points
 	for (int patchID = 0; patchID < NUM_PATCHES; patchID++)
 	{
+		// Splitting controlPoints array into 3 arrays, one for each direction
 		float xValues[NUM_CNTRL_PTS_PER_PATCH];
 		float yValues[NUM_CNTRL_PTS_PER_PATCH];
 		float zValues[NUM_CNTRL_PTS_PER_PATCH];
@@ -259,11 +259,20 @@ void generateVertices()
 			zValues[vertID] = controlPoints[2 + vertID * NUM_FLOATS_PER_VEC3 + patchID * NUM_CNTRL_PTS_PER_PATCH * NUM_FLOATS_PER_VEC3];
 		}
 
+		// Construct control net matrix for each direction
 		glm::mat4 P_x = glm::make_mat4(xValues);
 		glm::mat4 P_y = glm::make_mat4(yValues);
 		glm::mat4 P_z = glm::make_mat4(zValues);
 
 		int iter = 0;
+		// LEVEL is the number of sub divisions
+		// Example: LEVEL = 0
+		// - (0 + 1)^2 = 1 Sqaure per control net 
+		// - (0 + 2)^2 = 4 vertices for 1 square 
+		// - Two triangles constructed: 
+		//   - Triangle 1: Lower left vertex, lower right vertex, upper left vertex 
+		//   - Triangle 2: Lower Right vertex, upper left vertex, upper right vertex
+		//   - Triangle 1 and 2 share lower right and upper left vertices 
 		for (int k = 0; k < LEVEL; k++)
 		{
 			// Tri formation pattern:
