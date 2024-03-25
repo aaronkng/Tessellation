@@ -276,14 +276,19 @@ void generateVertices()
 		for (int k = 0; k < LEVEL; k++)
 		{
 			// Tri formation pattern:
+			// - Triangle 0: Lower Left Triangle
+			// - Triangle 1: Upper Right Triangle
+			// - Triangle 2: Lower Right Triangle
+			// - Triangle 3: Upper Left Triangle
+			// - Go back to step 0 and repeat
 			// Format: (u, v)
-			// i = 0: (k, 0) (k, 1) (k + 1, 0)
-			//		  +1 +1
-			// i = 1: (k + 1, 1) (k, 1) (k + 1, 0)
-			//							+0 +2 <- check if v value exceeds limit
-			// i = 2: (k + 1, 1) (k, 1) (k + 1, 2)
-			//		  -1	 +1
-			// i = 3: (k, 2) (k, 1) (k + 1, 2)
+			// Triangle 0: (k, 0) (k, 1) (k + 1, 0)
+			//		+1 +1
+			// Triangle 1: (k + 1, 1) (k, 1) (k + 1, 0)
+			//				      +0 +2 <- check if v value exceeds limit
+			// Triangle 2: (k + 1, 1) (k, 1) (k + 1, 2)
+			//		   -1  +1
+			// Triangle 3: (k, 2) (k, 1) (k + 1, 2)
 			//				 +0 +2 <- check if v value exceeds limit
 			int u_0 = k;
 			int v_0 = 0;
@@ -292,18 +297,21 @@ void generateVertices()
 			int u_2 = k + 1;
 			int v_2 = 0;
 			int counter = 0;
+			// NOTE: u,v indicates indices of subdivison, they are not the vertices of a Bezier surface
 			while (v_1 <= LEVEL && v_2 <= LEVEL)
 			{
-				// Input vertices for first triangle
+				// Vertex creation on Bezier Surface for (u,v)_0
 				formVertex(patchID, iter, u_0, v_0, P_x, P_y, P_z);
 				iter += NUM_FLOATS_PER_VEC3;
-				// Input vertices for second triangle
+				// Vertex creation on Bezier Surface for (u,v)_1
 				formVertex(patchID, iter, u_1, v_1, P_x, P_y, P_z);
 				iter += NUM_FLOATS_PER_VEC3;
-				// Input vertices for third triangle
+				// Vertex creation on Bezier Surface for (u,v)_2
 				formVertex(patchID, iter, u_2, v_2, P_x, P_y, P_z);
 				iter += NUM_FLOATS_PER_VEC3;
 
+				// After forming three vertices for triangle, 
+				// update (u,v) points to construct next triangle
 				if (counter % 4 == 0)
 				{
 					u_0 += 1;
@@ -369,7 +377,7 @@ void formVertex(int patchID, int iter, int u, int v, glm::mat4 P_x, glm::mat4 P_
 	float y = v_vec.x * y_vec.x + v_vec.y * y_vec.y + v_vec.z * y_vec.z + v_vec.w * y_vec.w;
 	float z = v_vec.x * z_vec.x + v_vec.y * z_vec.y + v_vec.z * z_vec.z + v_vec.w * z_vec.w;
 
-	// Storing Bezier Surface point into vertices
+	// Storing Bezier Surface point into vertices array
 	vertices[0 + iter + patchID * LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI * NUM_FLOATS_PER_VEC3] = x;
 	vertices[1 + iter + patchID * LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI * NUM_FLOATS_PER_VEC3] = y;
 	vertices[2 + iter + patchID * LEVEL * LEVEL * NUM_TRIS_PER_SQUARE * NUM_VERTS_PER_TRI * NUM_FLOATS_PER_VEC3] = z;
