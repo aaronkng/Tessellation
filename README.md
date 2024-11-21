@@ -22,7 +22,9 @@ This eqaution can be displayed visually as a graph:
 <details><summary><b>Quadratic Bézier Curves</b></summary>
 <p>
 	
-A quadratic Bézier curve is a path traced by the function $\textbf{B}(t)$ with control points $\textbf{P}_0$, $\textbf{P}_1$, and $\textbf{P}_2$. The equation for this is $\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 + (t)\textbf{P}_1] + (t)[(1-t)\textbf{P}_1 + (t)\textbf{P}_2]$, where $0 \leq t \leq 1$. 
+A quadratic Bézier curve is a path traced by the function $\textbf{B}(t)$ with control points $\textbf{P}_0$, $\textbf{P}_1$, and $\textbf{P}_2$. <br>
+Another way to express this equation is $`\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0, \textbf{P}_1}(t)] + (t)[\textbf{B}_{\textbf{P}_1, \textbf{P}_2}(t)]`$, where $0 \leq t \leq 1$. <br>
+The equation can be broken down to: $\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 + (t)\textbf{P}_1] + (t)[(1-t)\textbf{P}_1 + (t)\textbf{P}_2]$, where $0 \leq t \leq 1$. 
 
 This is essentially the linear interpolant of corresponding points on the linear Bézier curves from $\textbf{P}_0$ to $\textbf{P}_1$ and from $\textbf{P}_1$ to $\textbf{P}_2$. We can rearrange the equation to be: 
 <p align="center">
