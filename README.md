@@ -1,5 +1,6 @@
 # Goals of this project 
-The objective of this project was to understand how tessellation via Bézier surfaces worked and develop a piepline that takes in control points from a text file as input outputs a smooth 3D object. 
+The objective of this project was to understand how tessellation via Bézier surfaces worked and develop a piepline that takes in control points from a text file as input outputs a smooth 
+3D object. 
 
 # 0) Overview
 A Bézier curve is defined by a set of control points $\textbf{P}_0$ to $\textbf{P}_n$, where $n$ is the order of the Bézier curve ($n = 1$ for linear
@@ -10,8 +11,8 @@ curves, $n = 2$ for quadratic curves, etc.). The first and last control points a
 	
 A linear Bézier curve is simply a straight line in which linear interpolation occurs between two control points, $\textbf{P}_0$ and $\textbf{P}_1$. <br>
 The equation for a linear Bézier curve can be written as: $\textbf{B}(t) = \textbf{P}_0 + t(\textbf{P}_1 - \textbf{P}_0)$, where $0 \leq t \leq 1$. <br>
-This equation can be simplified to: $\textbf{B}(t) = (1-t)\textbf{P}_0 + (t)\textbf{P}_1$, where $0 \leq t \leq 1$. <br>
-This eqaution can be displayed visually as a graph:  
+This equation can be then  simplified to: $\textbf{B}(t) = (1-t)\textbf{P}_0 + (t)\textbf{P}_1$, where $0 \leq t \leq 1$. <br>
+If drawn on a graph, this is what a linear Bézier curve would look like on a graph:  
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72015614-f3d95f80-3216-11ea-9714-4c9e70cde675.png" width="250" height="250"> <br>
 </p>
@@ -22,19 +23,16 @@ This eqaution can be displayed visually as a graph:
 <details><summary><b>Quadratic Bézier Curves</b></summary>
 <p>
 	
-A quadratic Bézier curve is a path traced by the function $\textbf{B}(t)$ with control points $\textbf{P}_0$, $\textbf{P}_1$, and $\textbf{P}_2$. <br>
-Another way to express this equation is $`\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0, \textbf{P}_1}(t)] + (t)[\textbf{B}_{\textbf{P}_1, \textbf{P}_2}(t)]`$, where $0 \leq t \leq 1$. <br>
-The equation can be broken down to: $\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 + (t)\textbf{P}_1] + (t)[(1-t)\textbf{P}_1 + (t)\textbf{P}_2]$, where $0 \leq t \leq 1$. 
-
-This is essentially the linear interpolant of corresponding points on the linear Bézier curves from $\textbf{P}_0$ to $\textbf{P}_1$ and from $\textbf{P}_1$ to $\textbf{P}_2$. We can rearrange the equation to be: 
-<p align="center">
-$\textbf{B}(t) = (1-t)^2\textbf{P}_0 + 2(1-t)(t)\textbf{P}_1 + (t^2)\textbf{P}_2$
-</p>  
-
-As $t$ increases from 0 to 1, the curve departs from $\textbf{P}_0$ in the direction of $\textbf{P}_1$, then curves to arrive at $\textbf{P}_2$ from the direction of $\textbf{P}_1$. 
+A quadratic Bézier curve is a path traced by the function $\textbf{B}(t)$ with control points $\textbf{P}_0$, $\textbf{P}_1$, and $\textbf{P}_2$. The image below describes what a
+quadratic Bézier curve with three control points looks like: 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72016266-51ba7700-3218-11ea-93fb-578be7213b90.jpg"> 
 </p> 
+This graph shows that a quadtratic Bézier curve is essentially an interpolation between two linear Bézier curves: $\textbf{B}_{\textbf{P}_0, \textbf{P}_1}$ 
+and $\textbf{B}_{\textbf{P}_1, \textbf{P}_2}$. 
+A way to express this equation is $\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0, \textbf{P}_1}(t)] + (t)[\textbf{B}_{\textbf{P}_1, \textbf{P}_2}(t)]$, where $0 \leq t \leq 1$. <br>
+The equation can be broken down to: $\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 + (t)\textbf{P}_1] + (t)[(1-t)\textbf{P}_1 + (t)\textbf{P}_2]$, where $0 \leq t \leq 1$. <br>
+This equation can then be simplified to: $\textbf{B}(t) = (1-t)^2\textbf{P}_0 + 2(1-t)(t)\textbf{P}_1 + (t^2)\textbf{P}_2$, where $0 \leq t \leq 1$. <br>
 
 </p>
 </details>
