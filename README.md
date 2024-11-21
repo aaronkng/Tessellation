@@ -1,6 +1,11 @@
 # Goals of this project 
-The objective of this project was to understand how tessellation via Bézier surfaces worked and develop a piepline that takes in control points from a text file as input outputs a smooth 
-3D object. 
+The objective of this project was to understand how Bézier surfaces operated and determine how their functionality can be used in surface tessellation. I developed a crude algorithm that 
+would: 
+- Take in the controls points from a text file
+- Based on the how many subdivisions of tessellation, calculate surface points that goes along the Bézier curve
+- Use an algorithm that would organize the surface points into strips of triangle primitives, a format that the VBO reads so that the GPU can calculate the surfaces  <br>
+
+This algorithm essentially takes in as input a text file of control points, and outputs a 3D object in which its smoothness is based on the number of subdivisions the user requested. 
 
 # 0) Overview
 A Bézier curve is defined by a set of control points $\textbf{P}_0$ to $\textbf{P}_n$, where $n$ is the order of the Bézier curve ($n = 1$ for linear
@@ -10,9 +15,9 @@ curves, $n = 2$ for quadratic curves, etc.). The first and last control points a
 <p>
 	
 A linear Bézier curve is simply a straight line in which linear interpolation occurs between two control points, $\textbf{P}_0$ and $\textbf{P}_1$. <br>
-The equation for a linear Bézier curve can be written as: $\textbf{B}(t) = \textbf{P}_0 + t(\textbf{P}_1 - \textbf{P}_0)$, where $0 \leq t \leq 1$. <br>
-This equation can be then  simplified to: $\textbf{B}(t) = (1-t)\textbf{P}_0 + (t)\textbf{P}_1$, where $0 \leq t \leq 1$. <br>
-If drawn on a graph, this is what a linear Bézier curve would look like on a graph:  
+- The equation for a linear Bézier curve can be written as: $\textbf{B}(t) = \textbf{P}_0 + t(\textbf{P}_1 - \textbf{P}_0)$, where $0 \leq t \leq 1$.
+- This equation can be then  simplified to: $\textbf{B}(t) = (1-t)\textbf{P}_0 + (t)\textbf{P}_1$, where $0 \leq t \leq 1$. 
+- If drawn on a graph, this is what a linear Bézier curve would look like on a graph:  
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72015614-f3d95f80-3216-11ea-9714-4c9e70cde675.png" width="250" height="250"> <br>
 </p>
@@ -29,10 +34,11 @@ quadratic Bézier curve with three control points looks like:
 <img src="https://user-images.githubusercontent.com/34965351/72016266-51ba7700-3218-11ea-93fb-578be7213b90.jpg"> 
 </p> 
 This graph shows that a quadtratic Bézier curve is essentially an interpolation between two linear Bézier curves: $\textbf{B}_{\textbf{P}_0, \textbf{P}_1}$ 
-and $\textbf{B}_{\textbf{P}_1, \textbf{P}_2}$. 
-A way to express this equation is $\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0, \textbf{P}_1}(t)] + (t)[\textbf{B}_{\textbf{P}_1, \textbf{P}_2}(t)]$, where $0 \leq t \leq 1$. <br>
-The equation can be broken down to: $\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 + (t)\textbf{P}_1] + (t)[(1-t)\textbf{P}_1 + (t)\textbf{P}_2]$, where $0 \leq t \leq 1$. <br>
-This equation can then be simplified to: $\textbf{B}(t) = (1-t)^2\textbf{P}_0 + 2(1-t)(t)\textbf{P}_1 + (t^2)\textbf{P}_2$, where $0 \leq t \leq 1$. <br>
+and $\textbf{B}_{\textbf{P}_1, \textbf{P}_2}$. <br>
+
+- A way to express this equation is $`\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0, \textbf{P}_1}(t)] + (t)[\textbf{B}_{\textbf{P}_1, \textbf{P}_2}(t)]`$, where $0 \leq t \leq 1$.
+- The equation can be broken down to: $`\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 + (t)\textbf{P}_1] + (t)[(1-t)\textbf{P}_1 + (t)\textbf{P}_2]`$, where $0 \leq t \leq 1$.
+- This equation can then be simplified to: $\textbf{B}(t) = (1-t)^2\textbf{P}_0 + 2(1-t)(t)\textbf{P}_1 + (t^2)\textbf{P}_2$, where $0 \leq t \leq 1$.
 
 </p>
 </details>
