@@ -28,7 +28,7 @@ A linear Bézier curve is simply a straight line in which linear interpolation o
 <details><summary><b>Quadratic Bézier Curves</b></summary>
 <p>
 	
-A quadratic Bézier curve is a path traced by the function $\textbf{B}(t)$ with control points $\textbf{P}_0$, $\textbf{P}_1$, and $\textbf{P}_2$. The image below describes what a
+A quadratic Bézier curve is a curve in which its path is constrained by three control points: $\textbf{P}_0$, $\textbf{P}_1$, and $\textbf{P}_2$. The image below describes what a
 quadratic Bézier curve with three control points looks like: 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72016266-51ba7700-3218-11ea-93fb-578be7213b90.jpg"> 
@@ -45,21 +45,17 @@ and $\textbf{B}_{\textbf{P}_1, \textbf{P}_2}$. <br>
 
 <details><summary><b>Cubic Bézier Curves</b></summary>
 <p>
-	
-Four points  $\textbf{P}_0$,  $\textbf{P}_1$,  $\textbf{P}_2$, and  $\textbf{P}_3$ define a cubic Bézier curve. The curve starts at  $\textbf{P}_0$ going toward  $\textbf{P}_1$ and arrives at  $\textbf{P}_3$ coming from  $\textbf{P}_2$. The curve usually does not pass through  $\textbf{P}_1$ and  $\textbf{P}_2$ as these points are only there to provide directional infomration. 
+
+A cubic Bézier curve is a curve in which its path is constrained by four control points: $\textbf{P}_0$,  $\textbf{P}_1$,  $\textbf{P}_2$, and  $\textbf{P}_3$. The image below describes 
+what a cubic Bézier curve with four control points looks like: 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72017531-ba0a5800-321a-11ea-8608-edc9880e3132.jpg"> 
 </p>  
 
-The cubic Bézier curve can be defined as the combinaton of two quadratic Bézier curves:
-<p align="center">
-$\textbf{B}(t) = (1-t)\textbf{B}_{\textbf{P}_0,\textbf{P}_1,\textbf{P}_2}(t) + (t)\textbf{B}_{\textbf{P}_1,\textbf{P}_2,\textbf{P}_3}(t), 0 \leq t \leq 1$
-</p>  
-This can be rewritten as:
-<p align="center">
-$\textbf{B}(t) = (1-t)^3\textbf{P}_0 + 3(1-t)^2(t)\textbf{P}_1 + 3(1-t)(t^2)\textbf{P}_2 + (t^3)\textbf{P}_3, 0 \leq t \leq 1$
-</p>  
-The constants that precede each point are the values of the binomial coefficient. 
+The cubic Bézier curve is essentially an interpolation between two quadratic Bézier curves: $`\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0,\textbf{P}_1,\textbf{P}_2}(t)] + 
+(t)[\textbf{B}_{\textbf{P}_1,\textbf{P}_2,\textbf{P}_3}(t)]`$, where $0 \leq t \leq 1$.
+- The equation can be rewritten as: $\textbf{B}(t) = (1-t)^3\textbf{P}_0 + 3(1-t)^2(t)\textbf{P}_1 + 3(1-t)(t^2)\textbf{P}_2 + (t^3)\textbf{P}_3, 0 \leq t \leq 1$
+- Note that in the quadratic and cubic Bézier curves, the coefficients in each polynomial patterns itself after the binomial coefficients. This means as that we increase the number of control points, we can intuit what the Bézier curve equation will be like. 
 
 </p>
 </details>
