@@ -21,6 +21,7 @@ A linear Bézier curve is simply a straight line in which linear interpolation o
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72015614-f3d95f80-3216-11ea-9714-4c9e70cde675.png" width="250" height="250"> <br>
 </p>
+Source: https://en.wikipedia.org/wiki/Bézier_curve
 
 </p>
 </details>	
@@ -38,8 +39,9 @@ and $\textbf{B}_{\textbf{P}_1, \textbf{P}_2}$. <br>
 
 - A way to express this equation is $`\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0, \textbf{P}_1}(t)] + (t)[\textbf{B}_{\textbf{P}_1, \textbf{P}_2}(t)]`$, where $0 \leq t \leq 1$.
 - The equation can be broken down to: $`\textbf{B}(t) = (1 - t)[(1-t)\textbf{P}_0 + (t)\textbf{P}_1] + (t)[(1-t)\textbf{P}_1 + (t)\textbf{P}_2]`$, where $0 \leq t \leq 1$.
-- This equation can then be simplified to: $\textbf{B}(t) = (1-t)^2\textbf{P}_0 + 2(1-t)(t)\textbf{P}_1 + (t^2)\textbf{P}_2$, where $0 \leq t \leq 1$.
-
+- This equation can then be simplified to: $\textbf{B}(t) = (1-t)^2\textbf{P}_0 + 2(1-t)(t)\textbf{P}_1 + (t^2)\textbf{P}_2$, where $0 \leq t \leq 1$.  
+  
+Source: https://en.wikipedia.org/wiki/Bézier_curve
 </p>
 </details>
 
@@ -55,8 +57,9 @@ what a cubic Bézier curve with four control points looks like:
 The cubic Bézier curve is essentially an interpolation between two quadratic Bézier curves: $`\textbf{B}(t) = (1-t)[\textbf{B}_{\textbf{P}_0,\textbf{P}_1,\textbf{P}_2}(t)] + 
 (t)[\textbf{B}_{\textbf{P}_1,\textbf{P}_2,\textbf{P}_3}(t)]`$, where $0 \leq t \leq 1$.
 - The equation can be rewritten as: $\textbf{B}(t) = (1-t)^3\textbf{P}_0 + 3(1-t)^2(t)\textbf{P}_1 + 3(1-t)(t^2)\textbf{P}_2 + (t^3)\textbf{P}_3, 0 \leq t \leq 1$
-- Note that in the quadratic and cubic Bézier curves, the coefficients in each polynomial patterns itself after the binomial coefficients. This means as that we increase the number of control points, we can intuit what the Bézier curve equation will be like. 
-
+- Note that in the quadratic and cubic Bézier curves, the coefficients in each polynomial patterns itself after the binomial coefficients. This means as that we increase the number of control points, we can intuit what the Bézier curve equation will be like.   
+  
+Source: https://en.wikipedia.org/wiki/Bézier_curve
 </p>
 </details>
 
@@ -71,7 +74,7 @@ The cubic Bézier curve is essentially an interpolation between two quadratic B�
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72022702-f42d2700-3225-11ea-8307-7f555e51aac1.gif">
 </p>  
-
+Source: https://en.wikipedia.org/wiki/Bézier_surface
 </p>
 </details>
 
