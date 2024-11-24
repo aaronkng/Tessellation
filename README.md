@@ -2,7 +2,7 @@
 The objective of this project was to understand how Bézier surfaces operated and determine how their functionality can be used in surface tessellation. I developed a crude algorithm that 
 would: 
 - Take in the controls points from a text file
-- Based on the how many subdivisions of tessellation, calculate surface points that goes along the Bézier curve
+- Based on the how many subdivisions of tessellation, calculate surface points that goes along the Bézier surface
 - Use an algorithm that would organize the surface points into strips of triangle primitives, a format that the VBO reads so that the GPU can calculate the surfaces  <br>
 
 This algorithm essentially takes in as input a text file of control points, and outputs a 3D object in which its smoothness is based on the number of subdivisions the user requested. 
@@ -90,8 +90,10 @@ Control point 1
 ...
 Control point 15
 ```
+Note that the control points are arranged as bicubic patches, meaning that the Bézier surface will 
+consist of a matrix multiplication of two cubic Bézier curves. 
 Source for control points of Utah Teapot is [here](http://www.holmes3d.net/graphics/teapot/). 
-	
+
 </p>
 </details>
 
