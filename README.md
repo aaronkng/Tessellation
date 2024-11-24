@@ -63,12 +63,11 @@ The cubic Bézier curve is essentially an interpolation between two quadratic B�
 <details><summary><b>Bézier Surface</b></summary>
 <p> 
 	
-A Bézier surface of degree $(n, m)$ is defined by a set of $(n + 1)(m + 1)$ control points $\textbf{k}_{ij}$. A two-dimensional Bézier surface can be defined as a parametric surface where the position of a point $p$ is the function of the parametric coordinates $u, v$: 
-<p align="center">
-$\textbf{p}(u, v) = \sum_{i=0}^n \sum_{j=0}^m B_i^n(u) B_j^m(v) \textbf{k}_{ij}$
-</p>  
-
-$B_i^n(u) = \binom{n}{i} u^i(1-u)^{n-i}$ is the Bernstein polynomial and $\binom{n}{i} = \frac{n!}{i!(n-i)!}$ is the binomial coefficient. Typically, Bézier surfaces are constrained by the convex hull of its control points. Furthermore, the most common use of Bézier surfaces are as nets of **bicubic patches** ($m = n =3$); this means that a single bicubic patch consists of 16 control points. 
+- A Bézier surface of degree $(n, m)$ is defined by a set of $(n + 1)(m + 1)$ control points $\textbf{k}_{ij}$, where $i = 0, ... , n$ and $j = 0, ..., m$.
+- A two-dimensional Bézier surface can be defined as a parametric surface where the position of a point $p$ as the function of the parametric coordinates $u, v$ is given by: $\textbf{p}(u, v) = \sum_{i=0}^n \sum_{j=0}^m B_i^n(u) B_j^m(v) \textbf{k}_{ij}$. 
+- $B_i^n(u) = \binom{n}{i} u^i(1-u)^{n-i}$ is the basis Bernstein polynomial and $\binom{n}{i} = \frac{n!}{i!(n-i)!}$ is the binomial coefficient.
+- Typically, Bézier surfaces are constrained by the convex hull of its control points.
+- Furthermore, the most common use of Bézier surfaces are as nets of **bicubic patches** ($m = n =3$); this means that a single bicubic patch consists of 16 control points. 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34965351/72022702-f42d2700-3225-11ea-8307-7f555e51aac1.gif">
 </p>  
